@@ -1,0 +1,9 @@
+DOXYFILE_ENCODING      = UTF-8
+PROJECT_NAME           = "tyts"
+PROJECT_NUMBER         = "@PROJECT_VERSION@"
+INPUT                  = "@DOXYGEN_INPUT_DIR@"
+OUTPUT_DIRECTORY       = "@DOXYGEN_OUTPUT_DIR@"
+OUTPUT_LANGUAGE        = Chinese
+RECURSIVE              = YES
+GENERATE_HTML          = YES
+GENERATE_TREEVIEW      = YES

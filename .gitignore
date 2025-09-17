@@ -1,0 +1,16 @@
+# idea
+.idea
+cmake-build-debug
+cmake-build-release
+
+# vscode
+.cache
+.vscode
+
+# cache
+**/version.h
+Doxyfile
+api-docs
+
+# output
+build

@@ -1,0 +1,10 @@
+#pragma once
+
+// clang-format off
+
+#define TYTS_VERSION "@PROJECT_VERSION@"
+#define TYTS_VERSION_MAJOR "@PROJECT_VERSION_MAJOR@"
+#define TYTS_VERSION_MINOR "@PROJECT_VERSION_MINOR@"
+#define TYTS_VERSION_PATCH "@PROJECT_VERSION_PATCH@"
+
+// clang-format on
