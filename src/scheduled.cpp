@@ -4,35 +4,33 @@ namespace tyts {
 
 Scheduled::Scheduled() : stop_(false)
 {
-    worker_.reset(new std::thread(
-        [this]() {
-            while (true) {
-                std::unique_lock<std::mutex> lock(task_lock_);
-                condition_.wait(lock, [this]() {
-                    return stop_ || !task_list_.empty();
-                });
+    worker_.reset(new std::thread([this]() {
+        while (true) {
+            std::unique_lock<std::mutex> lock(task_lock_);
+            condition_.wait(lock, [this]() {
+                return stop_ || !task_list_.empty();
+            });
 
-                if (stop_)
-                    return;
+            if (stop_)
+                return;
 
-                auto task = *task_list_.begin();
-                if (SystemClock::now() >= task.nextTime) {
-                    task_list_.erase(task_list_.begin());
-                    lock.unlock();
-                    task.callback();
+            auto task = *task_list_.begin();
+            if (SystemClock::now() >= task.nextTime) {
+                task_list_.erase(task_list_.begin());
+                lock.unlock();
+                task.callback();
 
-                    // 添加下次任务
-                    if (task.period.count() > 0) {
-                        lock.lock();
-                        task.nextTime = task.nextTime + task.period;
-                        task_list_.insert(std::move(task));
-                    }
-                } else {
-                    condition_.wait_until(lock, task.nextTime);
+                // 添加下次任务
+                if (task.period.count() > 0) {
+                    lock.lock();
+                    task.nextTime = task.nextTime + task.period;
+                    task_list_.insert(std::move(task));
                 }
+            } else {
+                condition_.wait_until(lock, task.nextTime);
             }
-        },
-        this));
+        }
+    }));
 }
 
 Scheduled::~Scheduled()

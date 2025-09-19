@@ -7,6 +7,10 @@ cmake-build-release
 .cache
 .vscode
 
+# nodejs
+node_modules
+package-lock.json
+
 # cache
 **/version.h
 Doxyfile

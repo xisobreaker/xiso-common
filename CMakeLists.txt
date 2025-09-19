@@ -5,8 +5,13 @@ cmake_minimum_required(VERSION 3.10...3.21)
 # ---------------------------------------------------------------------------------------
 include(cmake/tyts_headers.cmake)
 include(cmake/tyts_sources.cmake)
+include(cmake/parse_json.cmake)
 
-project(tyts VERSION 1.0.0)
+# 解析 json 中的 version 字段
+set(PROJECT_PACKAGE_JSON "${CMAKE_CURRENT_LIST_DIR}/package.json")
+parse_json(${PROJECT_PACKAGE_JSON} "version" PACKAGE_VER)
+
+project(tyts VERSION ${PACKAGE_VER})
 
 # ---------------------------------------------------------------------------------------
 # Set default environment variable
@@ -69,6 +74,12 @@ endif()
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${TYTS_INCLUDE_DIRS}>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+
+target_link_libraries(${PROJECT_NAME} PUBLIC Threads::Threads)
+
+set_target_properties(${PROJECT_NAME} PROPERTIES 
+    VERSION ${PROJECT_VERSION} 
+    SOVERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
 
 # ---------------------------------------------------------------------------------------
 # Build examples
