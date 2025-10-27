@@ -1,3 +1,4 @@
+# 解析 JSON 文件，获取指定键对应的值
 function(parse_json json_file json_key output_var)
     file(STRINGS ${json_file} json_content)
 

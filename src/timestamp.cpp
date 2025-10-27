@@ -1,10 +1,11 @@
-#include "tyts/timestamp.h"
+#include "xiso/common/timestamp.h"
 #include <chrono>
 #include <cstring>
 
 using namespace std::chrono;
 
-namespace tyts {
+namespace xiso {
+namespace common {
 
 Timestamp::Timestamp() : Timestamp(std::chrono::microseconds::zero())
 {
@@ -93,4 +94,5 @@ int64_t Timestamp::to_nanoseconds() const
     return duration_cast<nanoseconds>(tp_.time_since_epoch()).count();
 }
 
-} // namespace tyts
+} // namespace common
+} // namespace xiso

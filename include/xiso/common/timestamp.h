@@ -4,7 +4,8 @@
 #include <cstdint>
 #include <string>
 
-namespace tyts {
+namespace xiso {
+namespace common {
 
 class Timestamp
 {
@@ -46,4 +47,5 @@ Timestamp::Timestamp(std::chrono::duration<Rep, Period> ts) : tp_(ts)
     localtime_r(&tv_.tv_sec, &tm_);
 };
 
-} // namespace tyts
+} // namespace common
+} // namespace xiso

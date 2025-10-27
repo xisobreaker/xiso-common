@@ -19,7 +19,7 @@ AlignAfterOpenBracket: Align
 AlignArrayOfStructures: Left
 # 是否对齐尾随注释
 AlignTrailingComments: true
-# 是否对齐连续的宏定义（All, AcrossEmptyLines, AcrossComments, AcrossEmptyLinesAndComments, None）
+# 是否对齐连续的宏定义(All, AcrossEmptyLines, AcrossComments, AcrossEmptyLinesAndComments, None)
 AlignConsecutiveMacros: AcrossEmptyLinesAndComments
 # 连续赋值时，是否对齐所有等号
 AlignConsecutiveAssignments: true
@@ -31,7 +31,7 @@ AlignOperands: true
 AlignEscapedNewlines: Left
 # 要使用的模板声明中断样式
 AlwaysBreakTemplateDeclarations: Yes
-# 允许短的函数放在同一行（Never; Empty, 空函数; InlineOnly, 定义在类中; All）
+# 允许短的函数放在同一行(Never; Empty, 空函数; InlineOnly, 定义在类中; All)
 AllowShortFunctionsOnASingleLine: InlineOnly
 # 允许短的 if 语句放在同一行
 AllowShortIfStatementsOnASingleLine: false

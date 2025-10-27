@@ -7,7 +7,8 @@
 #include <set>
 #include <thread>
 
-namespace tyts {
+namespace xiso {
+namespace common {
 
 class Scheduled
 {
@@ -73,4 +74,5 @@ private:
     std::multiset<CrontabTask>   task_list_;
 };
 
-} // namespace tyts
+} // namespace common
+} // namespace xiso

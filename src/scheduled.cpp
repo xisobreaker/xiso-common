@@ -1,6 +1,7 @@
-#include "tyts/scheduled.h"
+#include "xiso/common/scheduled.h"
 
-namespace tyts {
+namespace xiso {
+namespace common {
 
 Scheduled::Scheduled() : stop_(false)
 {
@@ -65,4 +66,5 @@ void Scheduled::addTask(ScheduledFunc                             &&fn,
     condition_.notify_one();
 }
 
-} // namespace tyts
+} // namespace common
+} // namespace xiso

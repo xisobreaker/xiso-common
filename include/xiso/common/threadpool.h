@@ -5,7 +5,8 @@
 #include <vector>
 #include <queue>
 
-namespace tyts {
+namespace xiso {
+namespace common {
 
 class ThreadPool
 {
@@ -35,12 +36,19 @@ public:
         return res;
     }
 
+    bool empty() const
+    {
+        std::lock_guard<std::mutex> lock(queue_lock_);
+        return tasks_.empty();
+    }
+
 private:
     std::vector<std::thread>          workers_;
     std::queue<std::function<void()>> tasks_;
-    std::mutex                        queue_lock_;
+    mutable std::mutex                queue_lock_;
     std::condition_variable           condition_;
     bool                              stop_;
 };
 
-} // namespace tyts
+} // namespace common
+} // namespace xiso

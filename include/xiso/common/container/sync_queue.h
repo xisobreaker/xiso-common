@@ -1,9 +1,9 @@
 // =====================================================================================
-//  Copyright (C) 2024 by Jiaxing Shao. All rights reserved
-//
+//  Copyright (C) 2025 by shaojx. All rights reserved
+
 //  文 件 名:  sync_queue.h
-//  作    者:  Jiaxing Shao, 980853650@qq.com
-//  创建时间:  2024-05-24 17:28:07
+//  作    者:  shaojx
+//  创建时间：  2025-10-27 09:45
 //  描    述:
 // =====================================================================================
 
@@ -16,7 +16,8 @@
 #include <mutex>
 #include <type_traits>
 
-namespace tyts {
+namespace xiso {
+namespace common {
 namespace container {
 
 /**
@@ -255,4 +256,5 @@ private:
 };
 
 } // namespace container
-} // namespace tyts
+} // namespace common
+} // namespace xiso

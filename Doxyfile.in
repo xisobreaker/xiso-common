@@ -1,5 +1,5 @@
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = "tyts"
+PROJECT_NAME           = "xiso_common"
 PROJECT_NUMBER         = "@PROJECT_VERSION@"
 INPUT                  = "@DOXYGEN_INPUT_DIR@"
 OUTPUT_DIRECTORY       = "@DOXYGEN_OUTPUT_DIR@"

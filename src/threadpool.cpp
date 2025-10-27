@@ -1,6 +1,7 @@
-#include "tyts/threadpool.h"
+#include "xiso/common/threadpool.h"
 
-namespace tyts {
+namespace xiso {
+namespace common {
 
 ThreadPool::ThreadPool(size_t numThreads) : stop_(false)
 {
@@ -37,4 +38,5 @@ ThreadPool::~ThreadPool()
     }
 }
 
-} // namespace tyts
+} // namespace common
+} // namespace xiso

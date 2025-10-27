@@ -16,7 +16,7 @@ find_program(HTMLREPORT_CMD cppcheck-htmlreport)
 if(CPPCHECK_CMD AND HTMLREPORT_CMD)
     if(CMAKE_VERSION VERSION_LESS 3.12)
         exec_program(
-            "${CPPCHECK_CMD}" ARGS "${CPPCHECK_OPTIONS}"
+            "${CPPCHECK_CMD}" ARGS ${CPPCHECK_OPTIONS}
             OUTPUT_VARIABLE rm_out
             RETURN_VALUE rm_retval
         )
@@ -25,12 +25,12 @@ if(CPPCHECK_CMD AND HTMLREPORT_CMD)
         endif()
 
         exec_program(
-            "${HTMLREPORT_CMD}" ARGS "${HTMLREPORT_OPTIONS}"
+            "${HTMLREPORT_CMD}" ARGS ${HTMLREPORT_OPTIONS}
             OUTPUT_VARIABLE rm_out
             RETURN_VALUE rm_retval
         )
         if(NOT "${rm_retval}" STREQUAL 0)
-            message(FATAL_ERROR "Problem when ${CPPCHECK_CMD}")
+            message(FATAL_ERROR "Problem when ${HTMLREPORT_CMD}")
         endif()
     else()
         execute_process(
