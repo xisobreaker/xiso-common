@@ -1,7 +1,7 @@
 {
-  "name": "tyts",
-  "version": "1.0.0",
-  "description": "tyts is a simple cpp library. It provides some simple tools for cpp development.",
+  "name": "xiso-common",
+  "version": "0.1.0",
+  "description": "xiso-common is a simple cpp library. It provides some simple tools for cpp development.",
   "main": "index.js",
   "directories": {
     "example": "examples",
@@ -16,16 +16,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xisobreaker/tyts.git"
+    "url": "git+https://github.com/xisobreaker/xiso-common.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/xisobreaker/tyts/issues"
+    "url": "https://github.com/xisobreaker/xiso-common/issues"
   },
-  "homepage": "https://github.com/xisobreaker/tyts#readme",
+  "homepage": "https://github.com/xisobreaker/xiso-common#readme",
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
