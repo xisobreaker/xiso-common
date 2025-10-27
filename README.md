@@ -1,3 +1,3 @@
-# Too Young Too Simple
+# Xiso Common
 
-tyts is a simple cpp library. It provides some simple tools for cpp development.
+xiso-common is a simple cpp library. It provides some simple tools for cpp development.
