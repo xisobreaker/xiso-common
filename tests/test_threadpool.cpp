@@ -1,22 +1,23 @@
 #include "xiso/common/threadpool.h"
 #include <atomic>
 #include <gtest/gtest.h>
-#include <thread>
 
 TEST(TEST_THREADPOOL, TEST_THREADPOOL)
 {
-    xiso::common::ThreadPool threadPool(4);
-    std::atomic<int>         counter(0);
+    xiso::common::ThreadPool       threadPool(4);
+    std::atomic<int>               counter(0);
+    std::vector<std::future<void>> futures;
     for (int i = 0; i < 100; i++) {
-        threadPool.enqueue(
+        auto future = threadPool.enqueue(
             [&counter](int i) {
                 counter.fetch_add(i);
             },
             i);
+        futures.push_back(std::move(future));
     }
 
-    while (!threadPool.empty()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    for (auto &future : futures) {
+        future.wait();
     }
     EXPECT_EQ(counter.load(), 4950);
 }
