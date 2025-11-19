@@ -1,6 +1,6 @@
 {
   "name": "xiso-common",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "xiso-common is a simple cpp library. It provides some simple tools for cpp development.",
   "main": "index.js",
   "directories": {

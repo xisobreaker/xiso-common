@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/xisobreaker/xiso-common/compare/v0.2.0...v0.3.0) (2025-11-19)
+
+
+### Features
+
+* 添加byteutils,strutils,properties等功能类或函数 ([326a296](https://github.com/xisobreaker/xiso-common/commit/326a2965df48659f16dbbd393ef7b1b1656f72c2))
+
 ## [0.2.0](https://github.com/xisobreaker/xiso-common/compare/v0.1.0...v0.2.0) (2025-11-19)
 
 
