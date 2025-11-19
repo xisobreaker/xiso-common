@@ -1,3 +1,4 @@
+#include "xiso/common/algorithm/validation.h"
 
 namespace xiso {
 namespace common {

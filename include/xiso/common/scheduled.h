@@ -50,8 +50,8 @@ public:
     /**
      * @brief 添加周期任务
      *
-     * @tparam Rep
-     * @tparam Period
+     * @tparam Rep 时间单位
+     * @tparam Period 时间精度
      * @param fn 任务回调
      * @param period 任务周期
      * @param start_now 立即执行任务

@@ -3,6 +3,8 @@ include_directories(${GTEST_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
 set(TEST_UNITCASE 
+    test_byteutils.cpp
+    test_configure.cpp
     test_nettools.cpp
     test_threadpool.cpp
     test_timestamp.cpp
