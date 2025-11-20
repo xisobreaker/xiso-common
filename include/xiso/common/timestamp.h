@@ -21,7 +21,8 @@ public:
     static Timestamp now();
 
 public:
-    std::string to_string() const;
+    std::string fmt_string(const std::string &format) const;
+    std::string to_string(bool containsMicros = true) const;
     std::string date_string() const;
     std::string time_string() const;
 

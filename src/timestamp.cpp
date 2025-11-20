@@ -14,6 +14,7 @@ Timestamp::Timestamp() : Timestamp(std::chrono::microseconds::zero())
 Timestamp::Timestamp(std::chrono::system_clock::time_point tp) : tp_(tp)
 {
     uint64_t ns = tp_.time_since_epoch().count();
+
     tv_.tv_sec  = ns / 1000000000;
     tv_.tv_usec = ns % 1000000000 / 1000;
     localtime_r(&tv_.tv_sec, &tm_);
@@ -28,12 +29,20 @@ Timestamp Timestamp::now()
     return Timestamp(std::chrono::system_clock::now());
 }
 
-std::string Timestamp::to_string() const
+std::string Timestamp::fmt_string(const std::string &format) const
+{
+    char buffer[32] = {};
+    std::strftime(buffer, sizeof(buffer), format.c_str(), &tm_);
+    return std::string(buffer);
+}
+
+std::string Timestamp::to_string(bool containsMicros) const
 {
     char buffer[32] = {};
 #if __cplusplus >= 201103L
     std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", &tm_);
-    snprintf(buffer + strlen(buffer), 32 - strlen(buffer), ".%06ld", tv_.tv_usec / 1000);
+    if (containsMicros)
+        snprintf(buffer + strlen(buffer), 32 - strlen(buffer), ".%06ld", tv_.tv_usec);
     return std::string(buffer);
 #else
     snprintf(buffer,
@@ -53,14 +62,14 @@ std::string Timestamp::to_string() const
 std::string Timestamp::date_string() const
 {
     char buffer[32] = {};
-    snprintf(buffer, 32, "%04d%02d%02d", tm_.tm_year + 1900, tm_.tm_mon + 1, tm_.tm_mday);
+    std::strftime(buffer, sizeof(buffer), "%Y%m%d", &tm_);
     return std::string(buffer);
 }
 
 std::string Timestamp::time_string() const
 {
     char buffer[32] = {};
-    snprintf(buffer, 32, "%02d%02d%02d", tm_.tm_hour, tm_.tm_min, tm_.tm_sec);
+    std::strftime(buffer, sizeof(buffer), "%H%M%S", &tm_);
     return std::string(buffer);
 }
 
