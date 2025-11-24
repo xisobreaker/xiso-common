@@ -44,6 +44,11 @@ const struct sockaddr *InetAddress::getSockAddr() const
     return reinterpret_cast<const struct sockaddr *>(&addr_);
 }
 
+const int InetAddress::getSockAddrLen() const
+{
+    return sizeof(addr_);
+}
+
 std::string InetAddress::toIpPort() const
 {
     char   buf[64] = {0};

@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <netinet/in.h>
 #include <string>
+#include <sys/socket.h>
 
 namespace xiso {
 namespace common {
@@ -12,9 +13,9 @@ class InetAddress
 {
 public:
     InetAddress();
-    InetAddress(uint16_t port, bool loopbackOnly = false);
-    InetAddress(const char *ip, uint16_t port);
-    InetAddress(const struct sockaddr_in &addr);
+    explicit InetAddress(uint16_t port, bool loopbackOnly = false);
+    explicit InetAddress(const char *ip, uint16_t port);
+    explicit InetAddress(const struct sockaddr_in &addr);
 
 public:
     /**
@@ -30,6 +31,13 @@ public:
      * @return const struct sockaddr*
      */
     const struct sockaddr *getSockAddr() const;
+
+    /**
+     * @brief 获取sockaddr_in结构体长度
+     *
+     * @return const int
+     */
+    const int getSockAddrLen() const;
 
     /**
      * @brief 转换为ip:port格式的字符串
