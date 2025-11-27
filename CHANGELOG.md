@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/xisobreaker/xiso-common/compare/v0.3.0...v0.4.0) (2025-11-27)
+
+
+### Features
+
+* 完善Timestamp可调用接口 ([4704431](https://github.com/xisobreaker/xiso-common/commit/4704431df9dbe2e4222933f27d7693dfa2493eac))
+* 移除net相关代码 ([2e649cb](https://github.com/xisobreaker/xiso-common/commit/2e649cbb6c54a80952b5b14e740b1be84e200164))
+* inet_address 添加获取addr长度接口 ([5dd2364](https://github.com/xisobreaker/xiso-common/commit/5dd236438523dabc9df29566606c2e6028b6290b))
+* timestamp 接口功能添加 ([d551e46](https://github.com/xisobreaker/xiso-common/commit/d551e46b3bdb29159c5faa1e4ade8c19f79ebe88))
+
 ## [0.3.0](https://github.com/xisobreaker/xiso-common/compare/v0.2.0...v0.3.0) (2025-11-19)
 
 
