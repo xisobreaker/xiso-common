@@ -23,3 +23,16 @@ TEST(TEST_TIMESTAMP, TIMESTAMP)
     EXPECT_STREQ(ts.fmt_string("%Y%m").c_str(), "202509");
     EXPECT_STREQ(ts.fmt_string("%Y").c_str(), "2025");
 }
+
+TEST(TEST_TIMESTAMP, UNFORMATTED)
+{
+    xiso::common::Timestamp ts =
+        xiso::common::Timestamp::from_string("2025-09-16 16:41:00.123000", "%Y-%m-%d %H:%M:%S");
+    EXPECT_EQ(ts.to_milliseconds(), 1758012060000);
+
+    ts = xiso::common::Timestamp::from_string("20250916", "%Y%m%d");
+    EXPECT_EQ(ts.to_milliseconds(), 1757952000000);
+
+    ts.add(std::chrono::hours(24));
+    EXPECT_EQ(ts.to_milliseconds(), 1758038400000);
+}

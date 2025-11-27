@@ -14,11 +14,18 @@ Timestamp::Timestamp() : Timestamp(std::chrono::microseconds::zero())
 Timestamp::Timestamp(std::chrono::system_clock::time_point tp) : tp_(tp)
 {
     uint64_t ns = tp_.time_since_epoch().count();
-
     tv_.tv_sec  = ns / 1000000000;
     tv_.tv_usec = ns % 1000000000 / 1000;
     localtime_r(&tv_.tv_sec, &tm_);
 }
+
+Timestamp::Timestamp(std::chrono::system_clock::duration ts) : tp_(ts)
+{
+    uint64_t ns = tp_.time_since_epoch().count();
+    tv_.tv_sec  = ns / 1000000000;
+    tv_.tv_usec = ns % 1000000000 / 1000;
+    localtime_r(&tv_.tv_sec, &tm_);
+};
 
 Timestamp::~Timestamp()
 {
@@ -27,6 +34,13 @@ Timestamp::~Timestamp()
 Timestamp Timestamp::now()
 {
     return Timestamp(std::chrono::system_clock::now());
+}
+
+Timestamp Timestamp::from_string(const std::string &str, const std::string &format)
+{
+    struct tm tm = {};
+    strptime(str.c_str(), format.c_str(), &tm);
+    return Timestamp(std::chrono::system_clock::from_time_t(std::mktime(&tm)));
 }
 
 std::string Timestamp::fmt_string(const std::string &format) const
@@ -71,6 +85,24 @@ std::string Timestamp::time_string() const
     char buffer[32] = {};
     std::strftime(buffer, sizeof(buffer), "%H%M%S", &tm_);
     return std::string(buffer);
+}
+
+void Timestamp::add(std::chrono::system_clock::duration ts)
+{
+    tp_         = tp_ + ts;
+    uint64_t ns = tp_.time_since_epoch().count();
+    tv_.tv_sec  = ns / 1000000000;
+    tv_.tv_usec = ns % 1000000000 / 1000;
+    localtime_r(&tv_.tv_sec, &tm_);
+}
+
+void Timestamp::sub(std::chrono::system_clock::duration ts)
+{
+    tp_         = tp_ - ts;
+    uint64_t ns = tp_.time_since_epoch().count();
+    tv_.tv_sec  = ns / 1000000000;
+    tv_.tv_usec = ns % 1000000000 / 1000;
+    localtime_r(&tv_.tv_sec, &tm_);
 }
 
 int64_t Timestamp::to_hours() const
